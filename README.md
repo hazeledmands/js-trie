@@ -1,0 +1,1 @@
+A trie data structure, implemented in JavaScript.
