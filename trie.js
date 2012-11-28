@@ -13,6 +13,10 @@
 
 }(this, function () {
 
+  // We're paranoid, so we redefine undefined.
+  var undefined; 
+
+  // Everything comes from a node.
   var TrieNode = function(key) {
     this.key = key;
     this.children = {};
