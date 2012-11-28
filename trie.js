@@ -1,4 +1,17 @@
-(function(undefined) {
+(function (root, factory) {
+
+  // Use AMD/CommonJS if we can, otherwise this library
+  // just populates a global variable called "trie."
+
+  if (typeof exports === 'object') {
+    module.exports = factory();
+  } else if (typeof define === 'function' && define.amd) {
+    define(factory);
+  } else {
+    root.trie = factory();
+  }
+
+}(this, function () {
 
   var TrieNode = function(key) {
     this.key = key;
@@ -40,7 +53,8 @@
     return data;
   };
 
-  createTrie = function() {
+  return function() {
     return new TrieNode();
   };
-}());
+
+}));
