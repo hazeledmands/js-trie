@@ -62,26 +62,45 @@
     }
   };
 
-  TrieNode.prototype.find = function(string) {
+  TrieNode.prototype.get = function(string) {
+    return this._subtree(string).data;
+  };
+
+  TrieNode.prototype.getAllMatchingKeysAndValues = function(string) {
+    return this._subtree(string)._subdata();
+  };
+
+  TrieNode.prototype._subtree = function(string) {
     var nextLetter = string[0];
     var nextNode = this.children[nextLetter];
 
     if(nextLetter === undefined) {
       return this;
-    }
-    else if(nextNode) {
-      return nextNode.find(string.substring(1));
+    } else if(nextNode) {
+      return nextNode._subtree(string.substring(1));
+    } else {
+      return {};
     }
   };
 
-  TrieNode.prototype.subData = function() {
-    var data = _.reduceRight(this.children, function(data, child) {
-      return data.concat(child.subData());
-    }, []);
-    if(this.data) {
-      data.push(this.data);
+  TrieNode.prototype._subdata = function() {
+    var prefix, child, childsubdata, key;
+    var out = {};
+    
+    for(prefix in this.children) {
+      child = this.children[prefix];
+
+      if(child.data !== undefined) {
+        out[prefix] = child.data;
+      }
+
+      childsubdata = child._subdata();
+      for(key in childsubdata) {
+        out[prefix + key] = childsubdata[key];
+      }
     }
-    return data;
+
+    return out;
   };
 
   return function() {

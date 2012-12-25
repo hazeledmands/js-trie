@@ -17,5 +17,8 @@
     "type": "git",
     "url": "https://github.com/demands/js-trie"
   },
-  "main": "trie.js"
+  "main": "trie.js",
+  "devDependencies": {
+    "mocha": "1.7.4"
+  }
 }
