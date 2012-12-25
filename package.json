@@ -1,0 +1,21 @@
+{
+  "name": "trie",
+  "version": "v1.0.0",
+  "description": "A simple, easy-to-use trie data structure.",
+  "keywords": ["trie", "autocomplete", "tree", "string search"],
+  "homepage": "https://github.com/demands/js-trie",
+  "bugs": {
+    "url": "https://github.com/demands/js-trie/issues",
+    "email": "me@maxedmands.com"
+  },
+  "author": {
+    "name": "Max Edmands",
+    "email": "me@maxedmands.com",
+    "url": "http://maxedmands.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/demands/js-trie"
+  },
+  "main": "trie.js"
+}
